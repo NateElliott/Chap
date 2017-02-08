@@ -27,21 +27,8 @@ class ChapBotView(View):
         payload = FBIO()
         payload.load(request.body.decode('utf-8'))
 
-
         if payload.is_message:
-            payload.respond('test')
-            print(payload.is_message)
-
-
-
-
-
-
-
-
-        #fbid, message = fbhelp.read_facebook_message(request.body.decode('utf-8'))
-
-        #fbhelp.send_facebook_message(fbid, message)
+            payload.respond('Hi {}, this is Chap'.format(payload.sender_first_name))
 
         return HttpResponse('gtg')
 
