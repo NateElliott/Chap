@@ -5,6 +5,8 @@ from .secf import load
 class FBIO:
 
     token = load('fbkey')
+    graph_url = 'https://graph.facebook.com'
+    graph_version = 'v2.6'
 
     def load(self, payload):
 
@@ -24,7 +26,7 @@ class FBIO:
                     self.is_message = False
 
     def get_facebook_info(self):
-        user_details_url = 'https://graph.facebook.com/v2.6/{}'.format(self.sender_id)
+        user_details_url = '{url}/{ver}/{fbid}'.format(url=self.graph_url,ver=self.graph_version,fbid=self.sender_id)
         user_details_params = {'fields': 'first_name,last_name', 'access_token': self.token}
         user_details = requests.get(user_details_url, user_details_params).json()
 
@@ -32,10 +34,10 @@ class FBIO:
         self.sender_last_name = user_details['last_name']
 
 
-
-
     def respond(self, message):
-        post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token={}'.format(self.token)
+        post_message_url = '{url}/{ver}/me/messages?access_token={token}'.format(url=self.graph_url,
+                                                                                 ver=self.graph_version,
+                                                                                 token=self.token)
         response_message = json.dumps({"recipient": {"id": self.sender_id}, "message": {"text": message}})
         response_headers = {"Content-Type": "application/json"}
         requests.post(post_message_url, headers=response_headers, data=response_message)

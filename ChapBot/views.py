@@ -4,7 +4,6 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
 from .helper import secf
-from .helper import fbhelp
 
 from .helper.fbhelp import FBIO
 
@@ -30,6 +29,4 @@ class ChapBotView(View):
         if payload.is_message:
             payload.respond('Hi {}, this is Chap'.format(payload.sender_first_name))
 
-        return HttpResponse('gtg')
-
-
+        return HttpResponse('Tthis is Chap.')
