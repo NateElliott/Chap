@@ -14,11 +14,12 @@ class ChapBotView(View):
     def dispatch(self, request, *args, **kwargs):
         return super(ChapBotView, self).dispatch(request, *args, **kwargs)
 
+
     def get(self, request):
         if request.GET.get('hub.verify_token') == secf.load('rootkey'):
             return HttpResponse(request.GET['hub.challenge'])
         else:
-            return HttpResponse('gtg')
+            return HttpResponse('This is Chap')
 
 
     def post(self, request):
@@ -29,4 +30,4 @@ class ChapBotView(View):
         if payload.is_message:
             payload.respond('Hi {}, this is Chap'.format(payload.sender_first_name))
 
-        return HttpResponse('Tthis is Chap.')
+        return HttpResponse('This is Chap.')
