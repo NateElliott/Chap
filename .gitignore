@@ -1,2 +1,11 @@
 .idea
 sec
+capture
+Chap/__pycache__/
+ChapBot/__pycache__/
+ChapBot/helper/__pycache__/
+ChapBot/migrations/0001_initial.py
+ChapBot/migrations/0002_delete_stats.py
+ChapBot/migrations/0003_contacts_messages.py
+ChapBot/migrations/__pycache__/
+capture/

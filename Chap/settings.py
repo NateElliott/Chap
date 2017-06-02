@@ -122,3 +122,4 @@ STATIC_URL = '/static/'
 
 
 SEC_DIR = os.path.join(BASE_DIR,'sec')
+CAP_DIR = os.path.join(BASE_DIR, 'capture')
